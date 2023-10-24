@@ -1,40 +1,41 @@
-// alert()
-const MIN_POWER = 20;
-const MAX_POWER = 40;
+const MIN_POWER = 10;
+const MAX_POWER = 30;
 
-let energiaGideon = 100;
 let energiaBill = 100;
+let energiaGideon = 100;
 
 let round = 0;
 
-while((energiaGideon>0) && (energiaBill>0)){
+function Golpe(){
+    return Math.ceil(Math.random()*(MAX_POWER - MIN_POWER)+ MIN_POWER)
+}
+
+while((energiaBill>0) && (energiaGideon>0)){
 round +=1;
-console.log('-----round: ' + round +'----------------------')
+console.log('----------Round: '+ round +'------------------------')
 
+let golpeBill = Golpe();
+let golpeGideon =Golpe();
 
-let golpeGideon = parseInt(Math.random()*(MAX_POWER - MIN_POWER)+ MIN_POWER);
-let golpeBill = parseInt(Math.random()*(MAX_POWER - MIN_POWER)+ MIN_POWER);
+console.log("Bill golpea con fuerza de " + golpeBill);
+console.log("Gideon golpea con fuerza de " + golpeGideon);
 
-console.log("Gideon golpea con fuerza de " + golpeGideon)
-console.log("Bill golpea con fuerza de " + golpeBill)
-
-if(golpeGideon === golpeBill){
-    console.log("Siga Siga")
-}else if(golpeBill > golpeGideon){
-    golpeGideon = golpeGideon - energiaBill
+if(golpeBill === golpeGideon){
+    console.log("siga siga");
+}else if(golpeGideon > golpeBill) {
+    energiaBill -= golpeGideon
 }else {
-    energiaBill = energiaBill - golpeGideon;
+    energiaGideon -= golpeBill;
 }
-console.log("La energia de Goku es " + golpeGideon)
+
 console.log("La energia de Bill es " + energiaBill)
-
-console.log(parseInt(Math.random()*30));
+console.log("La energia de Gideon es " + energiaGideon)
 }
 
-console.log('------ Ganador ------')
+console.log("------- GANADOR ----------");
 
-if(energiaGideon>0){
-    console.log("Gano Gideon...")
+if(energiaBill>0){
+    console.log("Gano Bill....")
 }else {
-    console.log("Gano Gideon...")
+    console.log("Gano Gideon....")
 }
